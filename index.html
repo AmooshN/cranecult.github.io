@@ -44,14 +44,21 @@ Scroll();
   pointer-events: none;
 }
 </style>
+<style>
 
+	.repeating-image-container {
+	  background-image: url("Images/Under_Construction1.gif"); /* Replace with your image path */
+	  background-repeat: repeat-x;  /* Repeat horizontally */
+	  height: 300px; /* Adjust as needed */
+	}
+	</style>
 	
 <style>
 	body {background-color: black; font-family: "eb-garamond"}
 	</style>
 <style>
   body {
-    background-image: url("Backgrounds/Alien_Purple_Background.jpeg");
+    background-image: url("Backgrounds/Starry_Background.gif");
     font-family: "eb-garamond"
     padding: 11;
   }
@@ -92,25 +99,6 @@ Scroll();
     50% { opacity: 0; }
     100% { opacity: 1; }
 </style>
-<style>
-		#winamp-container {
-    margin: 0;
-    background-position: top left;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-	right: 40;
- }
-	#app {
-    position:fixed;
-	left:0;
-	right:-50;
-	top:0;
-	bottom:10;
-	padding: 20px 20px 20px 20px; 
-	z-index:-1;
-	}
-	
-	</style>
 </head>
 <body>
 <div class="container">
@@ -225,9 +213,50 @@ Scroll();
 		</tr></tbody></table>
 		</center>
 	</div>
-	
+
 
 </div>
+</body>
+<head>
+    <meta charset="utf-8" />
+</head>
+
+
+
+<body>
+    <div id="app" style="height: 100vh">
+        <!-- Webamp will attempt to center itself within this div -->
+    </div>
+    <script src="https://unpkg.com/webamp@1.4.2/built/webamp.bundle.min.js"></script>
+    <script>
+        const Webamp = window.Webamp;
+        const webamp = new Webamp({
+            initialTracks: [
+                {
+                    metaData: {
+                        artist: "Aphex Twin",
+                        title: "Xtal"
+                    },
+                    // NOTE: Your audio file must be served from the same domain as your HTML
+                    // file, or served with permissive CORS HTTP headers:
+                    // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+                    url: "https://raw.githubusercontent.com/AmooshN/cranecult.github.io/main/Music/Xtal.mp3",
+                    duration: 4.54
+                },
+                {
+                    metaData: {
+                        artist: "George Clanton",
+                        title: "Livin' Loose"
+                    },
+                    url: "https://raw.githubusercontent.com/AmooshN/cranecult.github.io/main/Music/Livin_Loose.mp3",
+                    duration: 5.50
+                }
+            ],
+        });
+
+        // Returns a promise indicating when it's done loading.
+        webamp.renderWhenReady(document.getElementById('app'));
+    </script>
 </body>
 
 <div><center><hr size="4" width = "100%">
@@ -249,21 +278,10 @@ Scroll();
 	</div>
 	
 
-
-<div>
-	<div id="winamp-container"></div>
-	
-	<div id="app"></div>
-	<script src="https://unpkg.com/webamp"></script>
-	<script>
-    const app = document.getElementById("app")
-    const webamp = new Webamp();
-    webamp.renderWhenReady(app);
-	</script>
-	</div>
 <div class="under-construction animated-text">Under Construction</div>
 	
 <link href="https://melonking.net/styles/flood.css" rel="stylesheet" type="text/css" media="all" />
 <script src="https://melonking.net/scripts/flood.js"></script>
-            
+<div class="repeating-image-container"></div>
+
 </html>
